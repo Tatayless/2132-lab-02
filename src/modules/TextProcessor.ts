@@ -21,18 +21,12 @@ export class LegacyTextProcessor implements TextProcessor {
         date,
       ] = matches;
 
-      const promo_code_encrypted = CaesarCipher.encrypt(promo_code)
-      const promo_number_encrypted = CaesarCipher.encrypt(promo_number)
-      const originating_number_encrypted = CaesarCipher.encrypt(originating_number)
-      const destination_number_encrypted = CaesarCipher.encrypt(destination_number)
-      const date_encrypted = CaesarCipher.encrypt(date)
-
       console.log([
-        promo_code_encrypted,
-        promo_number_encrypted,
-        originating_number_encrypted,
-        destination_number_encrypted,
-        date_encrypted,
+        promo_code,
+        promo_number,
+        originating_number,
+        destination_number,
+        date,
       ]);
     }
   }
@@ -57,7 +51,7 @@ export class NewTextProcessor implements TextProcessor {
         }
 
         Object.entries(text).forEach(([key, value]) => {
-          console.log(`${key}: ${CaesarCipher.encrypt(value)}`);
+          console.log(`${key}: ${value}`);
         });
         break;
       }
