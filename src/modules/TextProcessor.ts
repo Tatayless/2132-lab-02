@@ -1,6 +1,6 @@
 import { CaesarCipher } from "./DecoratorCipher";
 
-interface TextProcessor {
+export interface TextProcessor {
   processText(text: string | { [key: string]: string }): void;
 }
 
