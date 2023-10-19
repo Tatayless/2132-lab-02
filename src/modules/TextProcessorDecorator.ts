@@ -5,7 +5,7 @@ import {
 } from "./TextProcessor";
 import { CaesarCipher } from "./DecoratorCipher";
 
-class TextProcessorEncryptor implements TextProcessor {
+export class TextProcessorEncryptor implements TextProcessor {
   private processor: TextProcessor;
 
   constructor(processor: TextProcessor) {
@@ -27,7 +27,7 @@ class TextProcessorEncryptor implements TextProcessor {
   }
 }
 
-class TextProcessorDecryptor implements TextProcessor {
+export class TextProcessorDecryptor implements TextProcessor {
   private processor: TextProcessor;
 
   constructor(processor: TextProcessor) {
@@ -49,16 +49,5 @@ class TextProcessorDecryptor implements TextProcessor {
   }
 }
 
-const encryptor = new TextProcessorEncryptor(new NewTextProcessor());
-const decryptor = new TextProcessorDecryptor(new NewTextProcessor());
-const textData = {
-  promo_code: "ABC123",
-  promo_number: "9876543210",
-  originating_number: "1234567890",
-  destination_number: "0987654321",
-  date: "20231019",
-};
-let newEncryptedText: { [key: string]: string } = encryptor.processText(textData);
-console.log(newEncryptedText);
-console.log(decryptor.processText(newEncryptedText));
+
 
