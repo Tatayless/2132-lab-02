@@ -1,6 +1,7 @@
 import { LegacyTextProcessor } from "./modules/TextProcessor";
 import { NewTextProcessor } from "./modules/TextProcessor";
 import { TextProcessorAdapter } from "./modules/TextProcessor";
+import { TextProcessorEncryptor, TextProcessorDecryptor } from "./modules/TextProcessorDecorator";
 
 const legacyText = `LOAD123|9181234568|9189876543|10012023`;
 const newText = {
@@ -22,3 +23,8 @@ const newText = {
 adapter.processText(legacyText);
 adapter.processText(newText);
  
+const encryptor = new TextProcessorEncryptor(new NewTextProcessor());
+const decryptor = new TextProcessorDecryptor(new NewTextProcessor());
+let newEncryptedText: { [key: string]: string } = encryptor.processText(newText);
+console.log(newEncryptedText);
+console.log(decryptor.processText(newEncryptedText));
