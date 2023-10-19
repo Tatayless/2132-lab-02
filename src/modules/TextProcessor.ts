@@ -29,6 +29,9 @@ export class LegacyTextProcessor implements TextProcessor {
         date,
       ]);
     }
+    else {
+      console.log('Not compatible with Legacy.')
+    }
   }
 }
 
@@ -44,6 +47,7 @@ export class NewTextProcessor implements TextProcessor {
 
     for (const key of Object.keys(text)) {
       if (!(key in formattedData)) {
+        console.log('Not compatible with new system.')
         break;
       } else {
         for (const key of Object.keys(text)) {
